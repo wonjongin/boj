@@ -7,16 +7,14 @@ set f [open "input.txt"]
 set lines [split [string trimright [read $f] "\n"] "\n"]
 foreach line $lines {
     send -- "$line\n"
-    sleep 0.1
+    # sleep 0.1
 }
 close $f
 
 # EOF 전송
 send \004
 
-# 결과 기다리기
-expect {
-    -re {[0-9.]+} {}
-}
+# 프로그램이 종료될 때까지 기다림
+expect eof
 
 exit

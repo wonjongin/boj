@@ -5,7 +5,7 @@ fn main() {
     io::stdin().read_line(&mut input).unwrap();
     let n: usize = input.trim().parse().unwrap();
 
-    let mut inputs: Vec<String> = Vec::with_capacity(n);
+    let mut inputs: Vec<i32> = Vec::with_capacity(n);
     for _ in 0..n {
         let mut line = String::new();
         if io::stdin().read_line(&mut line).unwrap() == 0 {
@@ -14,10 +14,16 @@ fn main() {
         if line.trim().is_empty() {
             break;
         }
-        inputs.push(line.trim().to_string());
+        inputs.push(line.trim().parse().unwrap());
     }
 
-    // Something ...
-
-    println!("Answer");
+    inputs.sort();
+    println!(
+        "{}",
+        inputs
+            .iter()
+            .map(|x| x.to_string())
+            .collect::<Vec<_>>()
+            .join("\n")
+    );
 }

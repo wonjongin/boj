@@ -1,4 +1,4 @@
-use std::io::{self};
+use std::io::{self, Write};
 
 fn main() {
     let mut input = String::new();
@@ -17,7 +17,8 @@ fn main() {
         inputs.push(line.trim().to_string());
     }
 
-    // Something ...
+    let stdout = io::stdout();
+    let mut out = io::BufWriter::new(stdout.lock());
 
-    println!("Answer");
+    inputs.iter().for_each(|x| writeln!(out, "{}", x).unwrap());
 }
